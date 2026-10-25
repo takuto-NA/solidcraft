@@ -13,8 +13,7 @@ use solidcraft_sketch::Sketch;
 
 use crate::*;
 
-/// Work counted on this thread: bodies moved, STEP texts digested, joint faces and bodies
-/// measured.
+/// Captured placement/import/joint work, plus the existing thread-local body-measurement probe.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub(super) struct Counts {
     pub moved: usize,
@@ -35,7 +34,7 @@ pub(super) fn count(f: impl FnOnce(&mut Counts)) {
     });
 }
 
-/// The work `f` does on this thread.
+/// The captured work `f` does; body measurement retains its separate thread-local probe.
 fn counted(f: impl FnOnce()) -> Counts {
     use solidcraft_work::{Counter, capture};
     COUNTS.set(Counts::default());
@@ -566,4 +565,50 @@ fn placed_bodies_taken_as_before_keep_their_measure() {
     let centroid = before.bodies[0].measure().unwrap().centroid;
     let again = world_state_reusing(&doc, &state, &mut cache);
     assert_eq!(counted(|| assert_eq!(again.bodies[0].measure().unwrap().centroid, centroid)).measures, 0);
+}
+
+#[test]
+fn joined_world_placements_report_every_transformed_body() {
+    use solidcraft_work::{Counter, capture};
+    let mut doc = Document::new("joined placement accounting");
+    let component = doc.add_component(Some("Parts"), 0).unwrap();
+    for i in 0..33 {
+        let id = doc
+            .add_feature(
+                FeatureKind::Box {
+                    corner: point_expr(Vec3::new(f64::from(i) * 3.0, 0.0, 0.0)),
+                    length: "1".into(),
+                    width: "1".into(),
+                    height: "1".into(),
+                    operation: Operation::NewBody,
+                },
+                None,
+            )
+            .unwrap();
+        doc.feature_mut(id).unwrap().component = component;
+    }
+    let mut model = Model::new();
+    model.evaluate(&doc);
+    let state = model.state();
+    assert_eq!(state.bodies.len(), 33);
+    let mut placed = crate::eval::PlacedBodies::default();
+    for shift in [2.0, 5.0] {
+        place(&mut doc, component, rigid(Vec3::new(shift, 0.0, 0.0), Vec3::ZERO, Vec3::Z, 0.0));
+        let (world, work) = capture(|| crate::eval::world_state_reusing(&doc, &state, &mut placed));
+        assert!(work.complete(), "{work:?}");
+        assert_eq!(work.get(Counter::BodyTransforms), 33, "every joined worker belongs to the operation: {work:?}");
+        assert_eq!(world.bodies.len(), state.bodies.len());
+        for (source, moved) in state.bodies.iter().zip(&world.bodies) {
+            let expected = source.body.outline_bounds();
+            let actual = moved.body.outline_bounds();
+            assert!((actual.min - expected.min - Vec3::new(shift, 0.0, 0.0)).len() < 1e-9);
+            assert!((actual.max - expected.max - Vec3::new(shift, 0.0, 0.0)).len() < 1e-9);
+        }
+        let (warm, work) = capture(|| crate::eval::world_state_reusing(&doc, &state, &mut placed));
+        assert!(work.complete(), "{work:?}");
+        assert_eq!(work.get(Counter::BodyTransforms), 0, "ready placements must be reused: {work:?}");
+        for (before, after) in world.bodies.iter().zip(&warm.bodies) {
+            assert!(before.body.same(&after.body));
+        }
+    }
 }

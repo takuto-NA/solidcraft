@@ -7910,7 +7910,8 @@ pub fn world_state_reusing(doc: &Document, st: &ModelState, placed_before: &mut 
             }
         }
     }
-    let mut moved = kernel::map_on_threads(&jobs, 16, |(b, bm, name)| placed_before.placed(b, bm, name.clone())).into_iter().zip(&jobs);
+    let work = solidcraft_work::Context::current();
+    let mut moved = kernel::map_on_threads(&jobs, 16, |(b, bm, name)| work.run(|| placed_before.placed(b, bm, name.clone()))).into_iter().zip(&jobs);
     for (comp, path, m) in placements {
         let primary = path == first_path(comp);
         let ident = crate::is_identity(&m);
