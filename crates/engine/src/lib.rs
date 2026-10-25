@@ -541,7 +541,7 @@ impl Session {
             .and_then(|saved| Model::adopt(&doc, saved).map_err(|e| log::info!("the saved model is not used: {e}")).ok());
         let model = adopted.unwrap_or_else(|| {
             let mut model = Model::new();
-            model.evaluate(&doc);
+            model.evaluate_shared(&doc);
             model
         });
         Session {
@@ -822,10 +822,11 @@ impl Session {
     }
 
     pub fn refresh(&mut self) {
-        self.model.evaluate(&self.doc);
-        #[cfg(test)]
-        {
-            self.evaluations += 1;
+        if self.model.evaluate_shared(&self.doc) {
+            #[cfg(test)]
+            {
+                self.evaluations += 1;
+            }
         }
         self.revision += 1;
         self.prune_occurrence_state();
@@ -940,7 +941,7 @@ impl Session {
         }
         doc.reserved_body_names.extend(reserve);
         // The pinned names are the ones the bodies have: no result changes, so none is evaluated.
-        self.model.refingerprint(&self.doc);
+        self.model.refingerprint_shared(&self.doc);
     }
 
     /// A hidden construction plane stays hidden when the design renames it, or undo or redo
