@@ -2323,6 +2323,7 @@
   "prefs.status_error": "Erreur",
   "prefs.status_selected": "Sélectionné",
   "prefs.status_warning": "Avertissement",
+  "prefs.structure.scale_percent": "{percent} %",
   "prefs.supersampling_brief": "Dessine la vue en plus grand puis la réduit par filtrage : très net, mais plus lourd.",
   "prefs.tab_accent_note": "La couleur d'accent suit l'onglet actif",
   "prefs.theme_file": "fichier de thème",
