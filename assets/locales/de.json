@@ -4724,6 +4724,7 @@
   "ui.insert_design.saved_file": "{name} hat ungespeicherte Änderungen, daher wurde die gespeicherte Datei eingefügt. Speichern Sie sie und wählen Sie dann Verknüpfungen aktualisieren, um die Änderungen zu übernehmen.",
   "ui.insert_design.unsaved": "Ungespeicherte Änderungen",
   "ui.inspect": "Prüfen",
+  "ui.instances": "Instanzen",
   "ui.intersect": "Schnitt",
   "ui.isolate": "Isolieren",
   "ui.join": "Verbinden",
@@ -5214,6 +5215,7 @@
   "web.open_link": "Verknüpftes Design öffnen?",
   "web.open_link_confirm": "Es gibt nicht gespeicherte Änderungen. Das verknüpfte Design in einem neuen Tab öffnen?",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ auswählen · Eingabe / Tab vervollständigen · Esc schließen",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ auswählen · Eingabe übernimmt diesen Wert",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ wählen · Enter wendet das Getippte an · Esc schließt",
   "⌘Enter continues on GitHub.": "⌘Enter geht weiter zu GitHub."
 }

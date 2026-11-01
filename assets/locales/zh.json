@@ -4731,6 +4731,7 @@
   "ui.insert_design.saved_file": "{name} 有未保存的更改，因此插入的是其已保存的文件。请先保存，再使用“更新链接”导入这些更改。",
   "ui.insert_design.unsaved": "未保存的更改",
   "ui.inspect": "检查",
+  "ui.instances": "实例数",
   "ui.intersect": "相交",
   "ui.isolate": "隔离",
   "ui.join": "连接",
@@ -5222,6 +5223,7 @@
   "web.open_link": "打开链接的设计？",
   "web.open_link_confirm": "有未保存的更改。要在新标签页中打开链接的设计吗？",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ 选择 · Enter / Tab 补全 · Esc 关闭",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ 选择 · Enter 应用此值",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ 选择 · Enter 按原样应用 · Esc 关闭",
   "⌘Enter continues on GitHub.": "按⌘Enter在GitHub中继续。"
 }

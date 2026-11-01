@@ -4731,6 +4731,7 @@
   "ui.insert_design.saved_file": "{name} has unsaved changes, so its saved file was inserted. Save it, then Update Links to bring the changes in.",
   "ui.insert_design.unsaved": "Unsaved changes",
   "ui.inspect": "Inspect",
+  "ui.instances": "Instances",
   "ui.intersect": "Intersect",
   "ui.isolate": "Isolate",
   "ui.join": "Join",
@@ -5222,6 +5223,7 @@
   "web.open_link": "Open linked design?",
   "web.open_link_confirm": "There are unsaved changes. Open the linked design in a new tab?",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ choose · Enter / Tab complete · Esc dismiss",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ choose · Enter applies this value",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ choose · Enter applies what you typed · Esc dismiss",
   "⌘Enter continues on GitHub.": "⌘Enter continues on GitHub."
 }

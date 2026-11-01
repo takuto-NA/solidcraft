@@ -4731,6 +4731,7 @@
   "ui.insert_design.saved_file": "{name} に保存されていない変更があるため、保存済みのファイルを挿入しました。保存してから、リンクを更新で変更を取り込んでください。",
   "ui.insert_design.unsaved": "未保存の変更",
   "ui.inspect": "検査",
+  "ui.instances": "インスタンス",
   "ui.intersect": "交差",
   "ui.isolate": "分離表示",
   "ui.join": "結合",
@@ -5222,6 +5223,7 @@
   "web.open_link": "リンク先のデザインを開きますか？",
   "web.open_link_confirm": "保存していない変更があります。リンク先のデザインを新しいタブで開きますか？",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ 選択 · Enter / Tab 補完 · Esc 閉じる",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ 選択 · Enter この値を適用",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ 選択 · Enter 入力どおりに適用 · Esc 閉じる",
   "⌘Enter continues on GitHub.": "⌘EnterでGitHubに進みます。"
 }

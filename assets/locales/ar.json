@@ -4731,6 +4731,7 @@
   "ui.insert_design.saved_file": "في {name} تغييرات غير محفوظة، لذا أُدرج ملفه المحفوظ. احفظه، ثم استخدم تحديث الروابط لإدخال التغييرات.",
   "ui.insert_design.unsaved": "تغييرات غير محفوظة",
   "ui.inspect": "فحص",
+  "ui.instances": "النسخ",
   "ui.intersect": "تقاطع",
   "ui.isolate": "عزل",
   "ui.join": "ضم",
@@ -5222,6 +5223,7 @@
   "web.open_link": "فتح التصميم المرتبط؟",
   "web.open_link_confirm": "توجد تغييرات غير محفوظة. هل تريد فتح التصميم المرتبط في تبويب جديد؟",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ اختيار · Enter / Tab إكمال · Esc إغلاق",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ اختيار · Enter يطبّق هذه القيمة",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ اختيار · Enter يطبّق ما كتبته · Esc إغلاق",
   "⌘Enter continues on GitHub.": "⌘Enter يتابع في GitHub."
 }

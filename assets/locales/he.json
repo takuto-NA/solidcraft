@@ -4731,6 +4731,7 @@
   "ui.insert_design.saved_file": "ב-{name} יש שינויים שלא נשמרו, ולכן נוסף הקובץ השמור שלו. שמרו אותו ואז בחרו עדכון קישורים כדי להכניס את השינויים.",
   "ui.insert_design.unsaved": "שינויים שלא נשמרו",
   "ui.inspect": "בדיקה",
+  "ui.instances": "מופעים",
   "ui.intersect": "חיתוך משותף",
   "ui.isolate": "בידוד",
   "ui.join": "איחוד",
@@ -5222,6 +5223,7 @@
   "web.open_link": "לפתוח את התכן המקושר?",
   "web.open_link_confirm": "יש שינויים שלא נשמרו. לפתוח את התכן המקושר בלשונית חדשה?",
   "↑ ↓ choose · Enter / Tab complete · Esc dismiss": "↑ ↓ בחירה · Enter / Tab השלמה · Esc סגירה",
+  "↑ ↓ choose · Enter applies this value": "↑ ↓ בחירה · Enter מחיל את הערך הזה",
   "↑ ↓ choose · Enter applies what you typed · Esc dismiss": "↑ ↓ בחירה · Enter מחיל את מה שהוקלד · Esc סגירה",
   "⌘Enter continues on GitHub.": "⌘Enter ממשיך ב־GitHub."
 }
