@@ -594,6 +594,8 @@ pub struct SolveApp {
     /// A linked component's design edited in place, with its assembly around it.
     pub edit_in_place: edit_in_place::EditInPlace,
     pub(crate) pending_feature_edit: Option<feature_edit::PendingFeatureEdit>,
+    /// The feature being reopened from a click and where, until its dialog opens (UI state only).
+    edit_anchor_hint: Option<(u64, solidcraft_engine::geom::Vec3)>,
     /// The open feature window's check of what its material does (#6901).
     pub op_check: op_auto::OpCheck,
     /// A command recomputing the history (the marker moved, undo) computing off the window
@@ -828,6 +830,7 @@ impl SolveApp {
             editing_state: None,
             edit_in_place: Default::default(),
             pending_feature_edit: None,
+            edit_anchor_hint: None,
             op_check: op_auto::OpCheck::default(),
             deferred: None,
             deferred_queue: Vec::new(),
@@ -1851,9 +1854,9 @@ impl SolveApp {
             self.cancel_sketch();
             return;
         }
-        // Press Pull: edges get a fillet, a fillet's round face reopens its fillet (its size
-        // changes, as `solid.press_pull` does: #1932), other curved faces an offset, planar faces
-        // and profiles an extrude.
+        // Press Pull: edges get a fillet, a fillet's round face or a chamfer's flat one reopens
+        // its feature (its size changes, as `solid.press_pull` does: #1932, #4986), other curved
+        // faces an offset, planar faces and profiles an extrude.
         if id == "solid.press_pull" {
             if let Some(pending) = &mut self.pending_feature_edit {
                 pending.then_start(id);
@@ -1863,16 +1866,18 @@ impl SolveApp {
                 return self.start("solid.fillet");
             }
             let sel = &self.session.selection;
-            let curved = sel.iter().find_map(|s| match s {
-                solidcraft_engine::Sel::Face { body, index, .. } if dialogs::planar_face(&self.session, body, *index).is_none() => {
-                    Some((body, *index))
-                }
+            let blend = sel.iter().find_map(|s| match s {
+                solidcraft_engine::Sel::Face { body, index, point } => dialogs::blend_feature(&self.session, body, *index).map(|id| (id, *point)),
                 _ => None,
             });
-            if let Some((body, index)) = curved {
-                if let Some(blend) = dialogs::blend_feature(&self.session, body, index) {
-                    return self.edit_feature(blend);
-                }
+            // Its arrow sits on the edge of the face clicked.
+            if let Some((blend, point)) = blend {
+                return self.edit_feature_at(blend, Some(point));
+            }
+            let curved = sel.iter().any(
+                |s| matches!(s, solidcraft_engine::Sel::Face { body, index, .. } if dialogs::planar_face(&self.session, body, *index).is_none()),
+            );
+            if curved {
                 return self.start("solid.offset_face");
             }
             let empty = sel.is_empty();
@@ -2052,7 +2057,15 @@ impl SolveApp {
     /// Edit a feature: sketches open in sketch mode; other features roll the
     /// timeline back to just before themselves and reopen their dialog, filled in.
     pub fn edit_feature(&mut self, id: u64) {
+        self.edit_feature_at(id, None);
+    }
+
+    /// [`Self::edit_feature`] opened from a click at `at` on what the feature made: the dialog's
+    /// arrow sits by that point (a fillet's or chamfer's edge nearest it).
+    pub(crate) fn edit_feature_at(&mut self, id: u64, at: Option<solidcraft_engine::geom::Vec3>) {
         use solidcraft_engine::doc::FeatureKind;
+        // A non-finite point (over the control channel) keeps the first edge.
+        self.edit_anchor_hint = at.filter(|p| p.is_finite()).map(|p| (id, p));
         dialogs::cancel(self);
         let Some(f) = self.session.doc.feature(id) else { return };
         if matches!(f.kind, FeatureKind::Sketch { .. }) {
@@ -2075,8 +2088,12 @@ impl SolveApp {
 
     fn open_feature_edit(&mut self, id: u64, marker: Option<usize>, original: Session) {
         self.editing_state = Some(dialogs::EditingState { source: self.session.scratch(), original });
+        // The id check matters while another feature's reopening is still pending: a later call
+        // for a feature id that is gone returns before it drops that pending edit.
+        let hint = self.edit_anchor_hint.take().filter(|(f, _)| *f == id).map(|(_, p)| p);
         match dialogs::for_feature(self, id, marker) {
-            Some(d) => {
+            Some(mut d) => {
+                d.anchor_hint = hint;
                 if !d.previews() {
                     self.editing_state = None;
                 }

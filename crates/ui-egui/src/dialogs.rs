@@ -508,6 +508,9 @@ pub struct Dialog {
     pub press_pull: bool,
     /// The operation the window chooses by itself (#6901).
     pub op_auto: crate::op_auto::OpAuto,
+    /// Where the face that reopened this fillet or chamfer was clicked (Press Pull): its arrow
+    /// sits on the edge nearest it. UI state only, never saved.
+    pub(crate) anchor_hint: Option<Vec3>,
 }
 
 #[derive(Clone, Debug)]
@@ -764,6 +767,7 @@ impl Dialog {
             shell_chain: Default::default(),
             press_pull: false,
             op_auto: Default::default(),
+            anchor_hint: None,
         }
     }
 
