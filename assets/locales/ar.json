@@ -4859,6 +4859,7 @@
   "ui.polygon": "مضلع",
   "ui.preferences": "التفضيلات",
   "ui.press_a_key": "اضغط مفتاحًا…",
+  "ui.print_face_body_not_sent": "جسم هذا الوجه لا يُرسل: أضفه أولًا إلى الأجسام",
   "ui.print_face_cleared": "{body}: تم مسح وجه الطباعة",
   "ui.print_face_input": "وجه الطباعة",
   "ui.print_face_pick": "اختر وجهًا مستويًا واحدًا لجسم صلب لجعله وجه الطباعة",

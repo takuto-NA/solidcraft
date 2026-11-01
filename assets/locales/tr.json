@@ -4859,6 +4859,7 @@
   "ui.polygon": "Çokgen",
   "ui.preferences": "Ayarlar",
   "ui.press_a_key": "bir tuşa basın…",
+  "ui.print_face_body_not_sent": "Bu yüzeyin gövdesi gönderilmiyor: önce onu Gövdeler'e ekleyin",
   "ui.print_face_cleared": "{body}: baskı yüzeyi temizlendi",
   "ui.print_face_input": "Baskı yüzeyi",
   "ui.print_face_pick": "Baskı yüzeyi yapmak için katı bir gövdenin düz bir yüzeyini seçin",

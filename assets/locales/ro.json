@@ -4859,6 +4859,7 @@
   "ui.polygon": "Poligon",
   "ui.preferences": "Preferințe",
   "ui.press_a_key": "apăsați o tastă…",
+  "ui.print_face_body_not_sent": "Corpul acelei fețe nu este trimis: adăugați-l mai întâi la Corpuri",
   "ui.print_face_cleared": "{body}: fața de imprimare a fost ștearsă",
   "ui.print_face_input": "Față de imprimare",
   "ui.print_face_pick": "Selectați o față plană a unui corp solid pentru a o face fața de imprimare",

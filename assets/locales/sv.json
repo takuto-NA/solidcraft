@@ -4859,6 +4859,7 @@
   "ui.polygon": "Polygon",
   "ui.preferences": "Inställningar",
   "ui.press_a_key": "tryck på en tangent…",
+  "ui.print_face_body_not_sent": "Den ytans kropp skickas inte: lägg först till den i Kroppar",
   "ui.print_face_cleared": "{body}: utskriftsyta rensad",
   "ui.print_face_input": "Utskriftsyta",
   "ui.print_face_pick": "Välj en plan yta på en solid kropp för att göra den till utskriftsytan",

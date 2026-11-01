@@ -4859,6 +4859,7 @@
   "ui.polygon": "Polígono",
   "ui.preferences": "Preferencias",
   "ui.press_a_key": "preme unha tecla…",
+  "ui.print_face_body_not_sent": "O corpo desa cara non se envía: engádeo primeiro a Corpos",
   "ui.print_face_cleared": "{body}: cara de impresión quitada",
   "ui.print_face_input": "Cara de impresión",
   "ui.print_face_pick": "Selecciona unha cara plana dun corpo sólido para facela a cara de impresión",

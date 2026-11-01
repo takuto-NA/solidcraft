@@ -4859,6 +4859,7 @@
   "ui.polygon": "ポリゴン",
   "ui.preferences": "環境設定",
   "ui.press_a_key": "キーを押してください…",
+  "ui.print_face_body_not_sent": "この面のボディは送信されません。先にボディに追加してください",
   "ui.print_face_cleared": "{body}: 造形面を解除しました",
   "ui.print_face_input": "造形面",
   "ui.print_face_pick": "ソリッドボディの平面を1つ選択すると造形面になります",

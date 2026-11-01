@@ -4859,6 +4859,7 @@
   "ui.polygon": "Poligon",
   "ui.preferences": "Preferensi",
   "ui.press_a_key": "tekan tombol…",
+  "ui.print_face_body_not_sent": "Bodi permukaan itu tidak dikirim: tambahkan dulu ke Bodi",
   "ui.print_face_cleared": "{body}: permukaan cetak dihapus",
   "ui.print_face_input": "Permukaan cetak",
   "ui.print_face_pick": "Pilih satu permukaan datar dari bodi padat untuk dijadikan permukaan cetak",

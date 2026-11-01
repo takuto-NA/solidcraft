@@ -3616,6 +3616,7 @@
   "ui.polygon": "다각형",
   "ui.preferences": "환경 설정",
   "ui.press_a_key": "키를 누르세요…",
+  "ui.print_face_body_not_sent": "이 면의 바디는 보내지지 않습니다. 먼저 바디에 추가하십시오",
   "ui.print_face_cleared": "{body}: 출력 바닥면을 해제했습니다",
   "ui.print_face_input": "출력 바닥면",
   "ui.print_face_pick": "솔리드 바디의 평면 하나를 선택하면 출력 바닥면이 됩니다",

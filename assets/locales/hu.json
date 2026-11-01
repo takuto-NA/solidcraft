@@ -4859,6 +4859,7 @@
   "ui.polygon": "Sokszög",
   "ui.preferences": "Beállítások",
   "ui.press_a_key": "nyomjon meg egy billentyűt…",
+  "ui.print_face_body_not_sent": "Ennek a lapnak a teste nincs elküldve: előbb add hozzá a Testekhez",
   "ui.print_face_cleared": "{body}: nyomtatási lap törölve",
   "ui.print_face_input": "Nyomtatási lap",
   "ui.print_face_pick": "Válassz ki egy tömör test egy sík lapját, hogy az legyen a nyomtatási lap",

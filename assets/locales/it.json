@@ -4859,6 +4859,7 @@
   "ui.polygon": "Poligono",
   "ui.preferences": "Preferenze",
   "ui.press_a_key": "premi un tasto…",
+  "ui.print_face_body_not_sent": "Il corpo di quella faccia non viene inviato: aggiungilo prima a Corpi",
   "ui.print_face_cleared": "{body}: faccia di stampa rimossa",
   "ui.print_face_input": "Faccia di stampa",
   "ui.print_face_pick": "Seleziona una faccia piana di un corpo solido per renderla la faccia di stampa",

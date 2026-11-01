@@ -4859,6 +4859,7 @@
   "ui.polygon": "Đa giác",
   "ui.preferences": "Tùy chọn cài đặt",
   "ui.press_a_key": "nhấn một phím…",
+  "ui.print_face_body_not_sent": "Thân của mặt này không được gửi: hãy thêm nó vào Thân khối trước",
   "ui.print_face_cleared": "{body}: đã xóa mặt in",
   "ui.print_face_input": "Mặt in",
   "ui.print_face_pick": "Chọn một mặt phẳng của thân đặc để đặt làm mặt in",

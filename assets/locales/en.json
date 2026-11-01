@@ -4859,6 +4859,7 @@
   "ui.polygon": "Polygon",
   "ui.preferences": "Preferences",
   "ui.press_a_key": "press a key…",
+  "ui.print_face_body_not_sent": "That face's body is not being sent: add it to Bodies first",
   "ui.print_face_cleared": "{body}: print face cleared",
   "ui.print_face_input": "Print face",
   "ui.print_face_pick": "Select one flat face of a solid body to make it the print face",

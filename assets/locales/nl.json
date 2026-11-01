@@ -4859,6 +4859,7 @@
   "ui.polygon": "Veelhoek",
   "ui.preferences": "Voorkeuren",
   "ui.press_a_key": "druk op een toets…",
+  "ui.print_face_body_not_sent": "Het lichaam van dat vlak wordt niet verstuurd: voeg het eerst toe aan Lichamen",
   "ui.print_face_cleared": "{body}: printvlak gewist",
   "ui.print_face_input": "Printvlak",
   "ui.print_face_pick": "Selecteer één vlak van een massief lichaam om het het printvlak te maken",

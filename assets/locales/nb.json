@@ -4859,6 +4859,7 @@
   "ui.polygon": "Mangekant",
   "ui.preferences": "Innstillinger",
   "ui.press_a_key": "trykk på en tast…",
+  "ui.print_face_body_not_sent": "Legemet til den flaten sendes ikke: legg det til i Kropper først",
   "ui.print_face_cleared": "{body}: utskriftsflate fjernet",
   "ui.print_face_input": "Utskriftsflate",
   "ui.print_face_pick": "Velg en plan flate på et massivt legeme for å gjøre den til utskriftsflaten",

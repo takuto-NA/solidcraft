@@ -4859,6 +4859,7 @@
   "ui.polygon": "Poligon",
   "ui.preferences": "Tetapan",
   "ui.press_a_key": "tekan kekunci…",
+  "ui.print_face_body_not_sent": "Jasad muka itu tidak dihantar: tambahkannya pada Jasad dahulu",
   "ui.print_face_cleared": "{body}: muka cetakan dikosongkan",
   "ui.print_face_input": "Muka cetakan",
   "ui.print_face_pick": "Pilih satu muka rata pada jasad pepejal untuk menjadikannya muka cetakan",

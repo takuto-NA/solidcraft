@@ -4805,6 +4805,7 @@
   "ui.polygon": "Polygone",
   "ui.preferences": "Préférences",
   "ui.press_a_key": "appuyez sur une touche…",
+  "ui.print_face_body_not_sent": "Le corps de cette face n’est pas envoyé : ajoutez-le d’abord à Corps",
   "ui.print_face_cleared": "{body} : face d’impression effacée",
   "ui.print_face_input": "Face d’impression",
   "ui.print_face_pick": "Sélectionnez une face plane d’un corps solide pour en faire la face d’impression",

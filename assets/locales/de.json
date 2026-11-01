@@ -4842,6 +4842,7 @@
   "ui.polygon": "Polygon",
   "ui.preferences": "Einstellungen",
   "ui.press_a_key": "Taste drücken…",
+  "ui.print_face_body_not_sent": "Der Körper dieser Fläche wird nicht gesendet: Füge ihn zuerst bei Körper hinzu",
   "ui.print_face_cleared": "{body}: Auflagefläche entfernt",
   "ui.print_face_input": "Auflagefläche",
   "ui.print_face_pick": "Eine plane Fläche eines Volumenkörpers auswählen, um sie zur Auflagefläche zu machen",

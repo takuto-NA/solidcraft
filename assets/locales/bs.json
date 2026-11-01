@@ -4794,6 +4794,7 @@
   "ui.polygon": "Poligon",
   "ui.preferences": "Postavke",
   "ui.press_a_key": "pritisnite tipku…",
+  "ui.print_face_body_not_sent": "Tijelo te površine se ne šalje: prvo ga dodajte u Tijela",
   "ui.print_face_cleared": "{body}: površina za štampu uklonjena",
   "ui.print_face_input": "Površina za štampu",
   "ui.print_face_pick": "Odaberite ravnu površinu punog tijela da postane površina za štampu",

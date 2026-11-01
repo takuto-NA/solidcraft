@@ -4859,6 +4859,7 @@
   "ui.polygon": "多邊形",
   "ui.preferences": "偏好設定",
   "ui.press_a_key": "按一個鍵…",
+  "ui.print_face_body_not_sent": "此面的實體不會傳送：請先將其加入實體",
   "ui.print_face_cleared": "{body}：已清除列印底面",
   "ui.print_face_input": "列印底面",
   "ui.print_face_pick": "選取實體的一個平面，將其設為列印底面",

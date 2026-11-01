@@ -4468,6 +4468,7 @@
   "ui.polygon": "Monikulmio",
   "ui.preferences": "Asetukset",
   "ui.press_a_key": "paina näppäintä…",
+  "ui.print_face_body_not_sent": "Tämän pinnan kappaletta ei lähetetä: lisää se ensin kohtaan Kappaleet",
   "ui.print_face_cleared": "{body}: tulostuspinta poistettu",
   "ui.print_face_input": "Tulostuspinta",
   "ui.print_face_pick": "Valitse kiinteän kappaleen yksi tasainen pinta tulostuspinnaksi",

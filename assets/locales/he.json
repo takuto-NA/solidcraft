@@ -4859,6 +4859,7 @@
   "ui.polygon": "מצולע",
   "ui.preferences": "העדפות",
   "ui.press_a_key": "יש ללחוץ על מקש…",
+  "ui.print_face_body_not_sent": "הגוף של פאה זו אינו נשלח: הוסף אותו קודם לגופים",
   "ui.print_face_cleared": "{body}: פאת ההדפסה נוקתה",
   "ui.print_face_input": "פאת הדפסה",
   "ui.print_face_pick": "בחר פאה שטוחה אחת של גוף מוצק כדי להפוך אותה לפאת ההדפסה",
