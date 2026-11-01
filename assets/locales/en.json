@@ -2201,6 +2201,8 @@
   "prefs.interface_language": "Interface language",
   "prefs.interface_note": "How SolidCraft looks and where its parts sit.",
   "prefs.interval_minutes": "{n} min",
+  "prefs.invert_curved_roll_arrows": "Invert the curved roll arrows",
+  "prefs.invert_curved_roll_arrows_note": "The two curved arrows at the cube's corner roll the view within the screen plane. On: the clockwise arrow rolls counterclockwise and the counterclockwise arrow rolls clockwise. Off: each arrow rolls the view the way it curls.",
   "prefs.invert_navigator_arrows": "Invert the view cube rotation arrows",
   "prefs.invert_navigator_arrows_note": "The arrows around the cube orbit the camera the way they point, as in Fusion and Inventor: the arrow on the left points right and swings the camera right. Off: an arrow rotates the cube toward the side it sits on, so the left arrow swings the camera left. The curved roll arrows are not affected.",
   "prefs.keep_work_on_tab_switch": "Keep dialogs and tools open when switching designs",

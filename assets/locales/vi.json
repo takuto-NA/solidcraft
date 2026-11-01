@@ -2201,6 +2201,8 @@
   "prefs.interface_language": "Ngôn ngữ giao diện",
   "prefs.interface_note": "Diện mạo của SolidCraft và cách bố trí các bảng điều khiển.",
   "prefs.interval_minutes": "{n} phút",
+  "prefs.invert_curved_roll_arrows": "Đảo ngược mũi tên cuộn cong",
+  "prefs.invert_curved_roll_arrows_note": "Hai mũi tên cong ở góc khối cuộn khung nhìn trong mặt phẳng màn hình. Khi bật: mũi tên theo chiều kim đồng hồ cuộn ngược chiều kim đồng hồ và ngược lại. Khi tắt: mỗi mũi tên cuộn khung nhìn theo chiều cong của nó.",
   "prefs.invert_navigator_arrows": "Đảo ngược mũi tên xoay của khối điều hướng",
   "prefs.invert_navigator_arrows_note": "Các mũi tên quanh khối xoay camera theo hướng mũi tên chỉ, như trong Fusion và Inventor: mũi tên bên trái chỉ sang phải và đưa camera sang phải. Khi tắt: mũi tên xoay khối về phía cạnh chứa nó, nên mũi tên bên trái đưa camera sang trái. Hai mũi tên cuộn cong không bị ảnh hưởng.",
   "prefs.keep_work_on_tab_switch": "Giữ hộp thoại và công cụ mở khi chuyển giữa các thiết kế",

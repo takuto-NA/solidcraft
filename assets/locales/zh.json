@@ -2201,6 +2201,8 @@
   "prefs.interface_language": "界面语言",
   "prefs.interface_note": "SolidCraft 的外观和面板布局。",
   "prefs.interval_minutes": "{n} 分钟",
+  "prefs.invert_curved_roll_arrows": "反转弯曲的翻滚箭头",
+  "prefs.invert_curved_roll_arrows_note": "立方体角落的两个弯曲箭头在屏幕平面内翻滚视图。开启：顺时针箭头逆时针翻滚，逆时针箭头顺时针翻滚。关闭：每个箭头按其弯曲方向翻滚视图。",
   "prefs.invert_navigator_arrows": "反转视图立方体的旋转箭头",
   "prefs.invert_navigator_arrows_note": "立方体周围的箭头按箭头所指的方向转动相机，与 Fusion 和 Inventor 相同：左侧箭头指向右，相机向右转动。关闭：箭头把立方体转向它所在的那一面，因此左侧箭头使相机向左转动。弯曲的翻滚箭头不受影响。",
   "prefs.keep_work_on_tab_switch": "切换设计时保持对话框和工具打开",

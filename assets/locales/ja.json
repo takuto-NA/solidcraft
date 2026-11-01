@@ -2201,6 +2201,8 @@
   "prefs.interface_language": "表示言語",
   "prefs.interface_note": "SolidCraft の外観と各パネルの配置。",
   "prefs.interval_minutes": "{n} 分",
+  "prefs.invert_curved_roll_arrows": "カーブしたロール矢印を反転",
+  "prefs.invert_curved_roll_arrows_note": "キューブの隅にある2つのカーブした矢印は、画面内でビューをロールします。オン: 時計回りの矢印が反時計回りに、反時計回りの矢印が時計回りにロールします。オフ: 各矢印は、そのカーブの向きにビューをロールします。",
   "prefs.invert_navigator_arrows": "ビューキューブの回転矢印を反転",
   "prefs.invert_navigator_arrows_note": "キューブの周りの矢印が、矢印の指す方向にカメラを回します（Fusion や Inventor と同じ動き）：左の矢印は右を指し、カメラを右に振ります。オフ: 矢印は、そのある面の方へキューブを回すため、左の矢印はカメラを左に振ります。カーブしたロール矢印は影響を受けません。",
   "prefs.keep_work_on_tab_switch": "デザインを切り替えてもダイアログとツールを開いたままにする",
