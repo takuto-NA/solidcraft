@@ -1588,10 +1588,18 @@ mod tests {
         assert_eq!(sorted(names(&s)), ["A", "B", "B (1)", "Cutter"]);
         run(&mut s, "body.rename", json!({"body": "B (1)", "name": "B2"}));
         assert_eq!(sorted(names(&s)), ["A", "B", "B2", "Cutter"]);
+        // The new name is the cut's second piece's, stored by the cut, not in the members' slots.
+        let stored = |id: u64| s.doc.features.iter().find(|f| f.id == id).map(|f| f.body_names.clone()).unwrap_or_default();
+        assert!(!stored(2).contains(&"B2".to_string()), "members: {:?}", stored(2));
+        assert_eq!(stored(4), ["B2"], "the cut stores its piece's name");
         run(&mut s, "file.save_as", json!({"path": saved.to_string_lossy()}));
         let mut reopened = Session::default();
         run(&mut reopened, "doc.open", json!({"path": saved.to_string_lossy()}));
         assert_eq!(sorted(names(&reopened)), ["A", "B", "B2", "Cutter"], "the rename must not move to member A on rebuild");
+        // `solidcraft-cli eval` of the saved file rebuilds it from its features alone, with no
+        // saved model to take the names from (#10438).
+        let rebuilt = Session::new(solidcraft_doc::Document::from_json(&s.doc.to_json()).unwrap());
+        assert_eq!(sorted(names(&rebuilt)), ["A", "B", "B2", "Cutter"], "a rebuild from the features alone keeps the rename too");
         let _ = std::fs::remove_dir_all(&dir);
     }
 
