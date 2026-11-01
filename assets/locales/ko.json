@@ -1311,6 +1311,8 @@
   "joint.from_bodies_hint": "선택한 각 바디가 제자리에 그대로 있으면서 자체의 새 구성 요소로 옮겨집니다.",
   "joint.one_body": "두 선택이 모두 {body}에 있습니다. 두 번째는 다른 부품에서 선택하세요.",
   "joint.one_component": "이 부품들은 한 구성 요소의 바디입니다: {bodies}. 관절은 한 구성 요소를 다른 구성 요소에 대해 움직이므로 부품마다 자체 구성 요소가 필요합니다.",
+  "joint_move.conflict": "이 부품의 조인트가 다른 조인트와 충돌합니다: {joint}.",
+  "joint_move.conflict_hint": "충돌하는 조인트를 편집, 비활성화 또는 삭제하여 다른 조인트가 부품을 배치할 수 있게 하세요.",
   "keymap.command_id": "명령 ID",
   "keymap.empty": "일치하는 명령이 없습니다",
   "keymap.use_anyway": "그래도 여기서 {key} 사용",
