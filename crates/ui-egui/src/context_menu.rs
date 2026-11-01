@@ -1102,6 +1102,23 @@ fn explode_text(app: &SolveApp) -> Option<Item> {
     Some(cmd(app, "sketch.break_link", "Explode Text").with(json!({ "link": link })))
 }
 
+/// Break Link (#10417): projected geometry among the selection (a model edge or vertex, another
+/// sketch's curve) becomes normal sketch geometry, which Trim, drags and dimensions change like
+/// any other. Messages already send people here ("use Break Link on it"); text has Explode Text.
+fn break_link(app: &SolveApp, sk: &solidcraft_engine::sketch::Sketch, ents: &[String]) -> Option<Item> {
+    let projected = |link: Option<&String>| {
+        link.and_then(|l| sk.link(l)).is_some_and(|l| !matches!(l.source, solidcraft_engine::sketch::LinkSource::Text { .. }))
+    };
+    let linked: Vec<&str> = ents
+        .iter()
+        .filter_map(|id| match sk.curves.iter().find(|c| &c.id == id) {
+            Some(c) => projected(c.link.as_ref()).then_some(c.id.as_str()),
+            None => sk.resolve_point(id).and_then(|i| sk.points.get(i)).filter(|p| projected(p.link.as_ref())).map(|p| p.id.as_str()),
+        })
+        .collect();
+    (!linked.is_empty()).then(|| cmd(app, "sketch.break_link", "Break Link").with(json!({ "entities": linked })))
+}
+
 fn alignment_items(selection: &[Sel]) -> Vec<Item> {
     let Some(points) = crate::selection::alignment_points(selection) else { return Vec::new() };
     vec![
@@ -1205,6 +1222,7 @@ fn sketch_entity_items(app: &SolveApp) -> Vec<Item> {
         v.push(cmd(app, "sketch.edit_text", "Edit Text"));
         v.extend(explode_text(app));
     }
+    v.extend(break_link(app, &ss.sketch, &ents));
     if let Some(curve) = crate::sketch_modify_ui::selected_equation(app) {
         v.push(act("ui.editEquationCurve", "Edit Equation Curve", "equation_curve").with(json!({ "curve": curve })));
     }
@@ -2792,6 +2810,53 @@ mod tests {
         let remaining = sk.shape(sk.curve_index(&output).unwrap()).unwrap();
         assert!(matches!(remaining, Shape::Line { a, b } if (a.dist(b) - 10.0).abs() < 1e-6), "{remaining:?}");
         assert!(remaining.dist(cut) > 1.0);
+    }
+
+    /// #10417: a projected edge's context menu offers Break Link, and the item makes it normal
+    /// sketch geometry that Trim then cuts. A line drawn in the sketch is offered no Break Link.
+    #[test]
+    fn projected_geometry_context_menu_breaks_its_link_and_allows_trim() {
+        use solidcraft_engine::geom::Vec2;
+
+        let mut h = crate::scenario::Harness::new();
+        h.app.home.open = false;
+        h.app.run("solid.box", json!({"length":20,"width":20,"height":10})).unwrap();
+        h.app.run("sketch.create", json!({"plane":"XY"})).unwrap();
+        h.app.run("sketch.project", json!({"refs":[{"body":"Body1"}],"projection_link":true})).unwrap();
+        let drawn = h.app.run("sketch.line", json!({"points":[[10,-5],[10,5]],"connect":false,"infer":false})).unwrap()["curves"][0]
+            .as_str()
+            .unwrap()
+            .to_owned();
+        let sid = h.app.session.active_sketch.unwrap();
+        let cut = Vec2::new(15.0, 0.0);
+        let edge = {
+            let state = h.app.session.world_state();
+            let sk = &state.sketch(sid).unwrap().sketch;
+            (0..sk.curves.len())
+                .find(|i| sk.curves[*i].link.is_some() && sk.shape(*i).is_some_and(|shape| shape.dist(cut) < 1e-6))
+                .map(|i| sk.curves[i].id.clone())
+        }
+        .expect("the box's edge along y = 0 is projected");
+        assert!(h.app.run("sketch.trim", json!({"curve":edge,"at":[cut.x,cut.y]})).is_err(), "a linked edge is not trimmed");
+
+        h.call("ui.view", json!({"view":"top"}));
+        h.app.cam.distance = 80.0;
+        h.settle();
+        h.step(&json!({"click":{"world":[10,3,0]},"button":"right"})).unwrap();
+        assert_eq!(h.app.session.selection, vec![Sel::SketchCurve { id: drawn.clone(), sketch: None }]);
+        assert!(!items(&h.app, &Target::Viewport).iter().any(|item| item.id == "sketch.break_link"), "a drawn line has no link to break");
+        h.step(&json!({"key":"Escape"})).unwrap();
+        h.step(&json!({"click":{"world":[cut.x,cut.y,0]},"button":"right"})).unwrap();
+        assert_eq!(h.app.session.selection, vec![Sel::SketchCurve { id: edge.clone(), sketch: None }]);
+        let menu = items(&h.app, &Target::Viewport);
+        let item = menu.iter().find(|item| item.id == "sketch.break_link").expect("a projected edge must offer Break Link");
+        assert_eq!(item.label, "Break Link");
+        assert!(item.enabled);
+        assert_eq!(item.params, Some(json!({"entities":[edge]})));
+        h.step(&json!({"click":{"handle":"menu:sketch.break_link"}})).unwrap();
+        let unlinked = h.app.session.world_state().sketch(sid).unwrap().sketch.curves.iter().find(|c| c.id == edge).is_some_and(|c| c.link.is_none());
+        assert!(unlinked, "Break Link makes the edge normal sketch geometry");
+        h.app.run("sketch.trim", json!({"curve":edge,"at":[cut.x,cut.y]})).unwrap();
     }
 
     /// #6533: a right-click on a fit point spline offers Add Spline Point at the clicked spot, and
